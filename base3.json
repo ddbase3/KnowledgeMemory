@@ -1,0 +1,13 @@
+{
+	"manifestVersion": 1,
+	"name": "KnowledgeMemory",
+	"namespace": "KnowledgeMemory",
+	"version": "1.3.5",
+	"description": "Document-grounded knowledge matching game for BASE3.",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"Base3Framework": ">=4.10.0",
+		"AssistantFoundation": ">=4.18.0",
+		"UiFoundation": ">=4.3.0"
+	}
+}
