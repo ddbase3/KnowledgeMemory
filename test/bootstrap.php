@@ -1,18 +1,26 @@
 <?php declare(strict_types=1);
 
-// Standalone PHPUnit bootstrap for the directly adjacent BASE3 modules.
-spl_autoload_register(static function(string $class): void {
-	$root = dirname(__DIR__, 2);
-	$parts = explode('\\', $class);
-	$map = [
-		'Base3' => 'Base3Framework',
-		'AssistantFoundation' => 'AssistantFoundation',
-		'UiFoundation' => 'UiFoundation',
-		'KnowledgeMemory' => 'KnowledgeMemory'
-	];
-	$module = $map[$parts[0]] ?? null;
-	if ($module === null) return;
-	array_shift($parts);
-	$path = $root . '/' . $module . '/src/' . implode('/', $parts) . '.php';
-	if (is_file($path)) require_once $path;
+/** Test-only autoloading for the installed ILIAS 11 components/Base3 module tree. */
+$moduleRoot = dirname(__DIR__);
+$modulesRoot = dirname($moduleRoot);
+$iliasRoot = dirname($modulesRoot, 2);
+$vendor = $iliasRoot . '/vendor/autoload.php';
+if (is_file($vendor)) require_once $vendor;
+
+$prefixes = [
+	'Base3\\KnowledgeMemory\\Test\\' => __DIR__ . '/',
+	'Base3\\KnowledgeMemory\\' => $moduleRoot . '/src/',
+	'Base3\\CoreFoundation\\' => $modulesRoot . '/CoreFoundation/src/',
+	'Base3\\AssistantFoundation\\' => $modulesRoot . '/AssistantFoundation/src/',
+	'Base3\\UiFoundation\\' => $modulesRoot . '/UiFoundation/src/'
+];
+spl_autoload_register(static function(string $class) use ($prefixes): void {
+	foreach ($prefixes as $prefix => $directory) {
+		if (!str_starts_with($class, $prefix)) continue;
+		$file = $directory . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+		if (is_file($file)) require_once $file;
+		return;
+	}
 });
+
+if (!defined('DIR_PLUGIN')) define('DIR_PLUGIN', $modulesRoot . '/');

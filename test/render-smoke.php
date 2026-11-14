@@ -2,7 +2,7 @@
 
 require __DIR__ . '/Fixture/TemplateViewFixture.php';
 
-use KnowledgeMemory\Test\Fixture\TemplateViewFixture;
+use Base3\KnowledgeMemory\Test\Fixture\TemplateViewFixture;
 
 $root = dirname(__DIR__);
 $texts = parse_ini_file($root . '/lang/Display/en.ini', true, INI_SCANNER_RAW)['knowledge_memory'];

@@ -43,11 +43,11 @@ The game UI now includes a top-right fullscreen control, a full-width shell with
 
 ## Existing integration and authorization
 
-- `KnowledgeMemory\Display\KnowledgeMemoryGameDisplay`: game UI.
-- `KnowledgeMemory\Display\KnowledgeMemorySettingsDisplay`: the same authorized settings UI, embedded within the game for authorized administrators. The separate BASE3 administration tab is removed.
-- `KnowledgeMemory\Output\KnowledgeMemoryGameOutput`: **the same** AJAX endpoint for both stages, differentiated by the `action` field.
-- `KnowledgeMemory\Service\KnowledgeMemoryGameService`: sole owner of prompt generation and `IAgentExecutionService` calls.
-- `KnowledgeMemory\Service\KnowledgeMemoryPairParser`: sole owner of keyword and card structure validation.
+- `Base3\KnowledgeMemory\Display\KnowledgeMemoryGameDisplay`: game UI.
+- `Base3\KnowledgeMemory\Display\KnowledgeMemorySettingsDisplay`: the same authorized settings UI, embedded within the game for authorized administrators. The separate BASE3 administration tab is removed.
+- `Base3\KnowledgeMemory\Output\KnowledgeMemoryGameOutput`: **the same** AJAX endpoint for both stages, differentiated by the `action` field.
+- `Base3\KnowledgeMemory\Service\KnowledgeMemoryGameService`: sole owner of prompt generation and `IAgentExecutionService` calls.
+- `Base3\KnowledgeMemory\Service\KnowledgeMemoryPairParser`: sole owner of keyword and card structure validation.
 
 Both endpoint actions independently require `IAuthorizationService` to ALLOW the existing `knowledge_memory` play feature, a trusted authenticated host user, `POST`, `Sec-Fetch-Site: same-origin` and `application/x-www-form-urlencoded`. A request without the Fetch Metadata proof is rejected. Form data are read by the injected `IRequest::post()` service. No additional `IToken` validation or alternative request path exists. Settings updates continue through the existing settings display, feature permission and `ISettingsStore` record `knowledge_memory/game`.
 

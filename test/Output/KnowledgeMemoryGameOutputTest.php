@@ -1,24 +1,39 @@
 <?php declare(strict_types=1);
 
-namespace KnowledgeMemory\Test\Output;
+/***********************************************************************
+ * This file is part of KnowledgeMemory for BASE3 Framework.
+ *
+ * KnowledgeMemory provides document-grounded matching games.
+ * It manages game settings, pairs and play sessions.
+ * Agent execution uses existing BASE3 and AssistantFoundation services.
+ *
+ * Developed by Daniel Dahme
+ * Licensed under GPL-3.0-or-later
+ * https://www.gnu.org/licenses/gpl-3.0.en.html
+ *
+ * https://base3.de
+ ***********************************************************************/
 
-use AssistantFoundation\Api\IAgentConfigurationService;
-use AssistantFoundation\Api\IAgentExecutionService;
-use AssistantFoundation\Dto\AgentExecutionRequest;
-use AssistantFoundation\Dto\AgentExecutionResult;
-use Base3\Api\IMvcView;
-use Base3\Api\IRequest;
-use Base3\Authorization\Api\IAuthorizationService;
-use Base3\Authorization\Dto\AuthorizationDecision;
-use Base3\Authorization\Dto\AuthorizationRequest;
-use Base3\Logger\Api\ILogger;
-use Base3\Settings\Api\ISettingsStore;
-use Base3\Usermanager\Api\IUsermanager;
-use Base3\Usermanager\User;
-use KnowledgeMemory\Feature\KnowledgeMemoryPlayFeature;
-use KnowledgeMemory\Output\KnowledgeMemoryGameOutput;
-use KnowledgeMemory\Service\KnowledgeMemoryGameService;
-use KnowledgeMemory\Service\KnowledgeMemoryPairParser;
+
+namespace Base3\KnowledgeMemory\Test\Output;
+
+use Base3\AssistantFoundation\Api\IAgentConfigurationService;
+use Base3\AssistantFoundation\Api\IAgentExecutionService;
+use Base3\AssistantFoundation\Dto\AgentExecutionRequest;
+use Base3\AssistantFoundation\Dto\AgentExecutionResult;
+use Base3\CoreFoundation\Api\IMvcView;
+use Base3\CoreFoundation\Api\IRequest;
+use Base3\CoreFoundation\Authorization\Api\IAuthorizationService;
+use Base3\CoreFoundation\Authorization\Dto\AuthorizationDecision;
+use Base3\CoreFoundation\Authorization\Dto\AuthorizationRequest;
+use Base3\CoreFoundation\Logger\Api\ILogger;
+use Base3\CoreFoundation\Settings\Api\ISettingsStore;
+use Base3\CoreFoundation\Usermanager\Api\IUsermanager;
+use Base3\CoreFoundation\Usermanager\User;
+use Base3\KnowledgeMemory\Feature\KnowledgeMemoryPlayFeature;
+use Base3\KnowledgeMemory\Output\KnowledgeMemoryGameOutput;
+use Base3\KnowledgeMemory\Service\KnowledgeMemoryGameService;
+use Base3\KnowledgeMemory\Service\KnowledgeMemoryPairParser;
 use PHPUnit\Framework\TestCase;
 
 final class KnowledgeMemoryGameOutputTest extends TestCase {

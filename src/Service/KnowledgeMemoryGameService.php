@@ -1,11 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace KnowledgeMemory\Service;
+/***********************************************************************
+ * This file is part of KnowledgeMemory for BASE3 Framework.
+ *
+ * KnowledgeMemory provides document-grounded matching games.
+ * It manages game settings, pairs and play sessions.
+ * Agent execution uses existing BASE3 and AssistantFoundation services.
+ *
+ * Developed by Daniel Dahme
+ * Licensed under GPL-3.0-or-later
+ * https://www.gnu.org/licenses/gpl-3.0.en.html
+ *
+ * https://base3.de
+ ***********************************************************************/
 
-use AssistantFoundation\Api\IAgentConfigurationService;
-use AssistantFoundation\Api\IAgentExecutionService;
-use AssistantFoundation\Dto\AgentExecutionRequest;
-use Base3\Settings\Api\ISettingsStore;
+
+namespace Base3\KnowledgeMemory\Service;
+
+use Base3\AssistantFoundation\Api\IAgentConfigurationService;
+use Base3\AssistantFoundation\Api\IAgentExecutionService;
+use Base3\AssistantFoundation\Dto\AgentExecutionRequest;
+use Base3\CoreFoundation\Settings\Api\ISettingsStore;
 use RuntimeException;
 
 /** Owns document-grounded round generation using the configured agent execution service. */

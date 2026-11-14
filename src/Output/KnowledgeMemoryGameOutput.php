@@ -1,17 +1,32 @@
 <?php declare(strict_types=1);
 
-namespace KnowledgeMemory\Output;
+/***********************************************************************
+ * This file is part of KnowledgeMemory for BASE3 Framework.
+ *
+ * KnowledgeMemory provides document-grounded matching games.
+ * It manages game settings, pairs and play sessions.
+ * Agent execution uses existing BASE3 and AssistantFoundation services.
+ *
+ * Developed by Daniel Dahme
+ * Licensed under GPL-3.0-or-later
+ * https://www.gnu.org/licenses/gpl-3.0.en.html
+ *
+ * https://base3.de
+ ***********************************************************************/
 
-use Base3\Api\IOutput;
-use Base3\Api\IRequest;
-use Base3\Api\IMvcView;
-use Base3\Authorization\Api\IAuthorizationService;
-use Base3\Authorization\Dto\AuthorizationRequest;
-use Base3\Logger\Api\ILogger;
-use Base3\Usermanager\Api\IUsermanager;
-use Base3\Usermanager\Permission;
-use KnowledgeMemory\Feature\KnowledgeMemoryPlayFeature;
-use KnowledgeMemory\Service\KnowledgeMemoryGameService;
+
+namespace Base3\KnowledgeMemory\Output;
+
+use Base3\CoreFoundation\Api\IOutput;
+use Base3\CoreFoundation\Api\IRequest;
+use Base3\CoreFoundation\Api\IMvcView;
+use Base3\CoreFoundation\Authorization\Api\IAuthorizationService;
+use Base3\CoreFoundation\Authorization\Dto\AuthorizationRequest;
+use Base3\CoreFoundation\Logger\Api\ILogger;
+use Base3\CoreFoundation\Usermanager\Api\IUsermanager;
+use Base3\CoreFoundation\Usermanager\Permission;
+use Base3\KnowledgeMemory\Feature\KnowledgeMemoryPlayFeature;
+use Base3\KnowledgeMemory\Service\KnowledgeMemoryGameService;
 use Throwable;
 
 /** Existing single game AJAX endpoint: discover keywords, then create cards. */
