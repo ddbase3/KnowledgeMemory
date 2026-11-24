@@ -2,12 +2,20 @@
 	"manifestVersion": 1,
 	"name": "KnowledgeMemory",
 	"namespace": "Base3\\KnowledgeMemory",
-	"version": "1.3.5",
+	"version": "5.0.0",
 	"description": "Document-grounded knowledge matching game for BASE3.",
 	"license": "GPL-3.0-or-later",
+	"maintainers": [
+		{
+			"name": "Daniel Dahme",
+			"url": "https://www.base3.de",
+			"email": "info@base3.de"
+		}
+	],
+	"repository": "https://github.com/ddbase3/KnowledgeMemory",
 	"dependencies": {
-		"AssistantFoundation": ">=4.18.0",
-		"CoreFoundation": ">=4.10.0",
-		"UiFoundation": ">=4.3.0"
+		"AssistantFoundation": ">=5.0.0",
+		"CoreFoundation": ">=5.0.0",
+		"UiFoundation": ">=5.0.0"
 	}
 }
